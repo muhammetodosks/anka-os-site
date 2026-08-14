@@ -42,7 +42,7 @@
   });
 
   /* Reveal-on-scroll */
-  const revealEls = document.querySelectorAll(".section-head, .card, .step, .download-card, .faq details");
+  const revealEls = document.querySelectorAll(".section-head, .card, .step, .download-card, .faq details, .shot, .spec-item, .wiki-toc, .rel");
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
