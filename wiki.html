@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wiki &amp; Güncellemeler — Anka-OS</title>
-  <meta name="description" content="Anka-OS Wiki — son güncellemeler, teknik özellikler, kurulum rehberi ve v1.1 yayın notları.">
+  <meta name="description" content="Anka-OS Wiki — son güncellemeler, teknik özellikler, kurulum rehberi ve yaklaşan v1.1 yayın notları.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
   <script defer src="assets/js/main.js"></script>
@@ -39,6 +39,7 @@
     .wtable td{padding:12px 16px;border-bottom:1px solid var(--card-border);color:var(--text)}
     .wtable tr:last-child td{border-bottom:none}
     .check{color:var(--success);font-weight:700}
+    .note{color:var(--accent);font-weight:700}
     .wiki-toc{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:22px 28px;margin:10px 0 0}
     .wiki-toc h3{margin-top:0;font-size:1rem}
     .wiki-toc a{display:block;padding:7px 0;color:var(--muted);font-size:.9rem;text-decoration:none;border-bottom:1px dashed var(--card-border)}
@@ -153,7 +154,7 @@
   <section class="wiki-section" id="teknik">
     <div class="wiki-wrap">
       <h2><span class="o">⚙️</span> Teknik Özellikler</h2>
-      <p class="lead">Anka-OS v1.1'in sistem gereksinimleri ve paket sürümleri.</p>
+      <p class="lead">Anka-OS v1.0'ın sistem gereksinimleri ve paket sürümleri.</p>
       <table class="wtable">
         <tr><th>Bileşen</th><th>Değer</th></tr>
         <tr><td>Mimari</td><td>x86_64</td></tr>
@@ -164,8 +165,8 @@
         <tr><td>Qt / Araç Takımı</td><td>Qt 6.11.1</td></tr>
         <tr><td>Ağ Yöneticisi</td><td>NetworkManager 1.58.0</td></tr>
         <tr><td>Web Tarayıcı</td><td>Firefox 153.0.4</td></tr>
-        <tr><td>Paket Sayısı</td><td>1070</td></tr>
-        <tr><td>ISO Boyutu</td><td>≈ 3.6 GB</td></tr>
+        <tr><td>Paket Sayısı</td><td>600+</td></tr>
+        <tr><td>ISO Boyutu</td><td>≈ 2.4 GB</td></tr>
         <tr><td>Telemetri</td><td>0 — sıfır</td></tr>
         <tr><td>Lisans</td><td>GPL / LGPL</td></tr>
       </table>
@@ -195,12 +196,12 @@
       <h3>3. Canlı Ortamda Başlat</h3>
       <p>USB'den boot edin. Canlı ortam otomatik olarak <b>Plasma masaüstüne</b> açılır.</p>
       <h3>4. Disk Kurulumu</h3>
-      <p>Masaüstünden kurulum aracını çalıştırın. <b>v1.1'den itibaren LUKS şifreli kurulum da sorunsuz çalışır.</b></p>
+      <p>Masaüstünden kurulum aracını çalıştırın. v1.0'da otomatik bölümleme ile kurulum desteklenir.</p>
       <div class="wiki-note gold">
         <b>🔐 v1.1 notu:</b> LUKS şifreli kurulum yaparsanız, sistem açılışında şifre sorulacak ve masaüstü sorunsuz yüklenecek. Bu, v1.0'daki siyah ekran sorununun giderildiği anlamına gelir.
       </div>
       <h3>5. İlk Açılış</h3>
-      <p>Kurulum sonrası ilk açılışta <b>Karşılama Merkezi</b> gösterilir. Kullanıcı hesabı hazır ve sudo yetkileri aktif.</p>
+      <p>Kurulum sonrası ilk açılışta <b>Karşılama Merkezi</b> gösterilir. Kullanıcı hesabı hazır.</p>
     </div>
   </section>
 
@@ -208,7 +209,7 @@
   <section class="wiki-section" id="dogrulama">
     <div class="wiki-wrap">
       <h2><span class="o">🔎</span> Doğrulama Raporu</h2>
-      <p class="lead">v1.1 ISO'su sanal makinede baştan sona doğrulandı.</p>
+      <p class="lead">v1.0 ISO'su sanal makinede baştan sona doğrulandı.</p>
       <table class="wtable">
         <tr><th>Test</th><th>Sonuç</th></tr>
         <tr><td>Canlı ISO → masaüstü</td><td class="check">✔ Plasma Wayland açıldı</td></tr>
@@ -216,7 +217,7 @@
         <tr><td>SDDM otomatik başlama</td><td class="check">✔ display-manager active</td></tr>
         <tr><td>Autologin → Plasma Wayland</td><td class="check">✔ startplasma-wayland + kwin + plasmashell</td></tr>
         <tr><td>Ekran render</td><td class="check">✔ 1280×800 canlı masaüstü</td></tr>
-        <tr><td>LUKS şifreli kurulum</td><td class="check">✔ v1.1'de düzeltildi</td></tr>
+        <tr><td>LUKS şifreli kurulum</td><td class="note">⏳ v1.1'de düzeltilecek (17 Ağustos)</td></tr>
         <tr><td>Journal</td><td class="check">✔ 0 kritik hata</td></tr>
       </table>
     </div>
