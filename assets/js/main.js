@@ -41,8 +41,60 @@
     nav.style.boxShadow = window.scrollY > 10 ? "0 4px 20px rgba(0,0,0,.18)" : "none";
   });
 
-  /* Reveal-on-scroll */
-  const revealEls = document.querySelectorAll(".section-head, .card, .step, .download-card, .faq details, .shot, .spec-item, .wiki-toc, .rel, .tl-item, .cmp-item");
+  /* Scroll progress bar */
+  const progress = document.getElementById("scrollProgress");
+  if (progress) {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      progress.style.width = max > 0 ? (window.scrollY / max) * 100 + "%" : "0%";
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* Cursor glow — fareyi takip eden ışık */
+  const glow = document.getElementById("cursorGlow");
+  if (glow && window.matchMedia("(hover: hover)").matches) {
+    let gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy, raf = null;
+    document.addEventListener("mousemove", (e) => { tx = e.clientX; ty = e.clientY; });
+    (function loop() {
+      gx += (tx - gx) * 0.12; gy += (ty - gy) * 0.12;
+      glow.style.transform = "translate(" + (gx - 190) + "px," + (gy - 190) + "px)";
+      raf = requestAnimationFrame(loop);
+    })();
+  }
+
+  /* Card 3D tilt */
+  if (window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".card, .shot-frame, .tl-body, .step").forEach((el) => {
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = "perspective(700px) rotateY(" + (x * 6) + "deg) rotateX(" + (-y * 6) + "deg) translateY(-4px)";
+      });
+      el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+    });
+  }
+
+  /* Hero parallax — fare ile hafif kayma */
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    document.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / innerWidth - 0.5);
+      const y = (e.clientY / innerHeight - 0.5);
+      const ph = hero.querySelector(".hero-pheonix");
+      const bg = hero.querySelector(".hero-bg");
+      if (ph) ph.style.translate = (x * -20) + "px " + (y * -12) + "px";
+      if (bg) bg.style.translate = (x * 14) + "px " + (y * 10) + "px";
+    });
+  }
+
+  /* Reveal-on-scroll — varyasyonlu animasyonlar */
+  const staggerParents = [".grid", ".steps", ".spec-grid", ".cmp-grid", ".shots", ".rel"];
+  const childSel = ".card, .step, .spec-item, .cmp-item, .shot, .rel";
+  const revealEls = document.querySelectorAll(".section-head, .download-card, .faq details, .wiki-toc, .tl-item");
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
@@ -55,12 +107,15 @@
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
-    revealEls.forEach((el) => {
-      el.classList.add("reveal");
-      io.observe(el);
+    revealEls.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
+    /* stagger: parent'a bak, child'lar tek tek gelsin */
+    document.querySelectorAll(staggerParents.join(",")).forEach((g) => {
+      g.classList.add("stagger");
+      io.observe(g);
     });
   } else {
     revealEls.forEach((el) => el.classList.add("in"));
+    document.querySelectorAll(staggerParents.join(",")).forEach((g) => g.classList.add("in"));
   }
 
   /* İndirme butonu statısı */
