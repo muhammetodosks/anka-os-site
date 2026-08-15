@@ -90,6 +90,7 @@
     <div class="wiki-toc">
       <h3>İçindekiler</h3>
       <a href="#duyuru">📣 v1.1 Resmî Yayın Duyurusu</a>
+      <a href="#yolharitasi">🗺️ v1.1 Yol Haritası</a>
       <a href="#guncellemeler">🛠️ Son Güncellemeler</a>
       <a href="#teknik">⚙️ Teknik Özellikler</a>
       <a href="#kurulum">📥 Kurulum Rehberi</a>
@@ -104,16 +105,172 @@
       <p class="lead">Anka-OS v1.1 <b style="color:var(--accent)">17 Ağustos 2026</b> tarihinde resmî olarak yayınlanacak.</p>
       <div class="wiki-note gold">
         <b>🗓️ Yayın tarihi: 17 Ağustos 2026</b><br>
-        <span style="color:var(--muted)">v1.1, LUKS şifreleme kurulumunu düzelten ve sudo desteği ekleyen kritik güncellemelerle geliyor.</span>
+        <span style="color:var(--muted)">v1.1; güvenlik, performans ve Anka araç takımı alanlarında kapsamlı bir güncelleme. Tek ISO'da üç cephe birden güçleniyor.</span>
       </div>
-      <h3>v1.1'de Neler Değişti</h3>
+
+      <h3>🛡️ Güvenlik</h3>
       <ul>
-        <li><b>🔐 LUKS şifreleme boot hatası düzeltildi</b> — Artık şifreli kurulumda sistem açılıyor, LUKS şifresi soruluyor.</li>
-        <li><b>🔑 sudo desteği eklendi</b> — Kullanıcılar artık <code>sudo</code> kullanabiliyor.</li>
-        <li><b>📦 Güncel paketler</b> — Kernel 7.1.8, Plasma 6.7.4, NetworkManager 1.58, Firefox 153.</li>
-        <li><b>⚡ Gelişmiş kararlılık</b> — Kurulum sonrası ilk açılış doğrulanmış ve sorunsuz.</li>
+        <li><b>🔐 LUKS2 şifreleme aktif</b> — Şifreli kurulumda boot düzeltildi; sistem açılışında LUKS şifresi soruluyor, siyah ekran yok.</li>
+        <li><b>🔑 sudo desteği</b> — <code>%wheel</code> grubu şifresiz sudo yetkisine sahip.</li>
+        <li><b>🔒 Güvenli SSH varsayılanları</b> — Root girişi ve şifreli kimlik doğrulama kapalı; yalnızca anahtar tabanlı erişim.</li>
+        <li><b>🧱 Hazır güvenlik duvarı</b> — ufw + firewalld kurulu, fail2ban ile brute-force koruması aktif.</li>
+        <li><b>🧠 Çekirdek sağlamlaştırma</b> — ASLR, kptr_restrict ve dmesg_restrict aktif; dengeli güvenlik profili.</li>
+        <li><b>📁 Sıkı dosya izinleri</b> — <code>/etc/shadow</code> 400, <code>/root</code> 750, sudoers 440.</li>
       </ul>
+
+      <h3>⚡ Performans</h3>
+      <ul>
+        <li><b>🎮 anka-tune oyun profili</b> — <code>anka-tune --game</code> ile giriş gecikmesi azaltma, ağ jitter düşürme, akıcı FPS.</li>
+        <li><b>⚙️ Sysctl optimizasyonu</b> — swappiness 10, vfs_cache_pressure 50, sched_autogroup kapalı, NUMA balans kapalı.</li>
+        <li><b>🌐 Ağ tamponları</b> — rmem_max / wmem_max 16 MB'a çıkarıldı; jitter ve ping süresi azaldı.</li>
+        <li><b>📦 Güncel paketler</b> — Kernel 7.1.8, Plasma 6.7.4, NetworkManager 1.58, Firefox 153.</li>
+        <li><b>🚀 Hızlı başlangıç</b> — İlk açılış doğrulandı; SDDM otomatik başlatma, autologin → Plasma Wayland.</li>
+      </ul>
+
+      <h3>🧰 Anka Araç Takımı</h3>
+      <ul>
+        <li><b>⚙️ anka-core</b> — Arka planda JSON-RPC sunan sistem çekirdeği; güvenlik ve sistem durumunu döner.</li>
+        <li><b>💻 anka-cli</b> — <code>anka-cli system.status</code>, <code>anka-cli plugins.list</code> ile sistem sorgulama.</li>
+        <li><b>📊 anka-probe</b> — Uptime, yük, bellek ve disk durumunu JSON olarak raporlar.</li>
+        <li><b>🎛️ anka-tune</b> — <code>--list</code> / <code>--apply</code> / <code>--revert</code> / <code>--game</code> modlu geri alınabilir performans tuning.</li>
+        <li><b>🌍 anka-mirrors</b> — <code>anka-mirrors -c TR</code> ile Türkiye öncelikli en hızlı aynalar.</li>
+        <li><b>🌗 anka-daynight / anka-twilight</b> — Saate göre otomatik açık/koyu tema.</li>
+        <li><b>🖼️ anka-wallpaper-cycle</b> — Anka duvar kâğıtları arasında otomatik geçiş.</li>
+        <li><b>👋 anka-first-run</b> — TR/EN/DE dil seçimiyle ilk açılış sihirbazı.</li>
+        <li><b>🐧 anka-fetch</b> — Terminalde sistem özeti gösteren hızlı bilgi aracı.</li>
+      </ul>
+
       <p style="color:var(--muted)">Resmî sürüm Internet Archive üzerinden ücretsiz dağıtılacaktır.</p>
+    </div>
+  </section>
+
+  <!-- V1.1 YOL HARİTASI -->
+  <section class="wiki-section section-alt" id="yolharitasi">
+    <div class="wiki-wrap">
+      <h2><span class="o">🗺️</span> v1.1 Yol Haritası</h2>
+      <p class="lead">v1.1 ile birlikte gelen ve gelen tüm geliştirmelerin tam listesi.</p>
+
+      <h3>🛡️ Güvenlik Katmanı</h3>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">LUKS2 · Şifreleme Düzeltmesi</div>
+        <h4>Şifreli kurulum artık açılıyor</h4>
+        <p>Installer <code>sd-encrypt</code> hook'unu ekliyor, <code>mkinitcpio -P</code> ile initramfs'i yeniden üretiyor ve GRUB'a <code>cryptdevice=UUID=…</code> parametresini koyuyor. Sistem açılışında LUKS şifresi soruluyor.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">sudo · Yetkilendirme</div>
+        <h4>Wheel grubu şifresiz sudo</h4>
+        <p><code>%wheel ALL=(ALL:ALL) NOPASSWD: ALL</code> — kullanıcılar komutları şifresiz yönetiyor; <code>/etc/sudoers.d/anka</code> 440 izniyle korunuyor.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">SSH · Güvenli Varsayılanlar</div>
+        <h4>Root girişi ve şifreli auth kapalı</h4>
+        <p><code>PermitRootLogin no</code>, <code>PasswordAuthentication no</code>, <code>PubkeyAuthentication yes</code> — yalnızca anahtar tabanlı uzaktan erişim.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">Firewall · ufw + firewalld + fail2ban</div>
+        <h4>Hazır koruma katmanı</h4>
+        <p>ufw ve firewalld kurulu; fail2ban ile brute-force saldırıları otomatik engelleniyor. İlk açılıştan itibaren aktif.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">Kernel · Sağlamlaştırma</div>
+        <h4>ASLR, kptr_restrict, dmesg_restrict</h4>
+        <p>Çekirdek güvenlik profili dengeli tutuluyor — oyun performansını bozmadan bellek rastgeleleştirme ve log kısıtları aktif.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">Dosya İzinleri</div>
+        <h4>Sıkı varsayılanlar</h4>
+        <p><code>/etc/shadow</code> → 400 · <code>/root</code> → 750 · <code>/root/.gnupg</code> → 700 · sudoers → 440.</p>
+      </div>
+
+      <h3>⚡ Performans Katmanı</h3>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-tune · Oyun Profili</div>
+        <h4>Tek komutla tuning</h4>
+        <p><code>anka-tune --game</code> (varsayılan profil) — <code>--list</code> salt-okunur önizleme, <code>--apply</code> uygula, <code>--revert</code> geri al. Tüm değişiklikler <code>/etc/anka/tune.d</code>'de yedeklenir.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">Sysctl · Dengeli Optimizasyon</div>
+        <h4>Gecikme ve akıcılık</h4>
+        <ul>
+          <li><code>vm.swappiness=10</code> — RAM öncelikli bellek yönetimi</li>
+          <li><code>vm.vfs_cache_pressure=50</code> — dosya önbelleği korunur</li>
+          <li><code>kernel.sched_autogroup_enabled=0</code> — zamanlayıcı gecikmesi azalır</li>
+          <li><code>kernel.numa_balancing=0</code> — NUMA ek yükü kaldırılır</li>
+          <li><code>net.core.rmem_max/wmem_max=16MB</code> — ağ jitter düşer</li>
+        </ul>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">Güncel Yazılım</div>
+        <h4>En yeni sürümler</h4>
+        <p>Kernel 7.1.8-arch1 · Plasma 6.7.4 · SDDM 0.21.0 · Qt 6.11.1 · NetworkManager 1.58.0 · Firefox 153.0.4.</p>
+      </div>
+
+      <h3>🧰 Anka Araç Takımı</h3>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-core + anka-cli</div>
+        <h4>Sistem çekirdeği ve istemci</h4>
+        <p>anka-core arka planda JSON-RPC üzerinden çalışır; <code>anka-cli system.status</code>, <code>anka-cli plugins.list</code> ile sistem sorgulanır. Güvenlik plugin'i firewall, ASLR ve kptr durumunu döner.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-probe</div>
+        <h4>Donanım teşhisi</h4>
+        <p>Uptime, yük ortalaması, işlemci sayısı, bellek kullanımı ve kök disk alanını JSON olarak raporlar.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-mirrors</div>
+        <h4>Hızlı ayna seçimi</h4>
+        <p><code>anka-mirrors -c TR -m 10</code> — reflector ile Türkiye öncelikli en hızlı 10 aynayı seçer; indirme hızı artar.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-daynight / anka-twilight</div>
+        <h4>Otomatik tema geçişi</h4>
+        <p>Sabah açık (BreezeLight), akşam koyu (AnkaPlasmaDark) renk şemasına otomatik geçiş.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-wallpaper-cycle</div>
+        <h4>Canlı masaüstü</h4>
+        <p>Anka'ya özel duvar kâğıtları arasında otomatik döngü; <code>~/.local/share/anka-wall</code>'da durum takibi.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-first-run</div>
+        <h4>İlk açılış sihirbazı</h4>
+        <p>Türkçe / English / Deutsch dil seçimi ile kişiselleştirilmiş başlangıç; tamamlandığında işaretlenir, bir daha gösterilmez.</p>
+      </div>
+      <div class="rel">
+        <span class="tag live">Tamamlandı</span>
+        <div class="rd">anka-fetch</div>
+        <h4>Terminal özeti</h4>
+        <p>Dağıtım logosu ve sistem bilgilerini terminalde hızlıca gösterir.</p>
+      </div>
+
+      <h3>🔮 Gelecek Sürümler</h3>
+      <div class="rel">
+        <span class="tag soon">v1.2 · Planlandı</span>
+        <div class="rd">Paket Yöneticisi</div>
+        <h4>Entegre grafik paket yöneticisi ve güncelleme merkezi</h4>
+        <p>Tek tıkla sistem güncelleme, paket arama ve kurma — komut satırı bilgisi gerektirmez.</p>
+      </div>
+      <div class="rel">
+        <span class="tag soon">v2.0 · Planlandı</span>
+        <div class="rd">ARM Desteği</div>
+        <h4>ARM64 mimarisi</h4>
+        <p>Raspberry Pi ve ARM tabanlı cihazlarda Anka-OS deneyimi.</p>
+      </div>
     </div>
   </section>
 
@@ -137,6 +294,7 @@
         <ul>
           <li><span class="check">✔</span> <b>LUKS şifreleme boot düzeltildi:</b> Installer <code>sd-encrypt</code> hook'unu ekliyor, <code>mkinitcpio -P</code> ile initramfs'i yeniden üretiyor ve GRUB'a <code>cryptdevice=UUID=…</code> parametresini koyuyor.</li>
           <li><span class="check">✔</span> <b>sudo eklendi:</b> Kurulum paket listesine <code>sudo</code> eklendi; <code>/etc/sudoers</code> artık oluşuyor.</li>
+          <li><span class="check">✔</span> <b>SSH güvenliğe alındı:</b> Root girişi ve şifreli kimlik doğrulama kapatıldı; yalnızca anahtar tabanlı erişim.</li>
           <li><span class="check">✔</span> <b>ISO yeniden üretildi:</b> 2026.08.14 sürümü, tüm düzeltmeleri içeriyor (3.6 GB).</li>
         </ul>
       </div>
@@ -168,6 +326,10 @@
         <tr><td>Paket Sayısı</td><td>600+</td></tr>
         <tr><td>ISO Boyutu</td><td>≈ 2.4 GB</td></tr>
         <tr><td>Telemetri</td><td>0 — sıfır</td></tr>
+        <tr><td>Şifreleme</td><td>LUKS2 (v1.1'de aktif)</td></tr>
+        <tr><td>Güvenlik Duvarı</td><td>ufw + firewalld + fail2ban</td></tr>
+        <tr><td>SSH</td><td>Yalnızca anahtar · root kapalı</td></tr>
+        <tr><td>Kernel Sağlamlaştırma</td><td>ASLR · kptr_restrict · dmesg_restrict</td></tr>
         <tr><td>Lisans</td><td>GPL / LGPL</td></tr>
       </table>
       <h3>Minimum Donanım Gereksinimleri</h3>
