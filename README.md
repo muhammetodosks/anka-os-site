@@ -42,3 +42,15 @@ git push origin main
 ## Lisans
 
 [MIT](LICENSE) © 2026 Anka-OS
+## 🚀 Bize Destek Ol
+
+Anka-OS açık kaynak ve ücretsiz. Popülerleşmesi için 30 saniyede yardım edebilirsin:
+
+- ⭐ **Star'la** — repo sayfasında sağ üstteki yıldıza tıkla
+- 📣 **Duyur** — donanımhaber, Reddit, X ve Telegram'da paylaş
+- 🐞 **Hata bildir** — [Issues](https://github.com/muhammetodosks/anka-os/issues) üzerinden
+- 💡 **Öneri ver** — v1.2 yol haritasına katkı sağla
+- 🌐 **Çeviri** — wiki ve site metinlerini çevir
+- 🤝 **Test et** — ISO'yu QEMU'da veya gerçek donanımda dene, geri bildirim ver
+
+Her star ve paylaşım, dağıtımın daha fazla kullanıcıya ulaşmasını sağlar.

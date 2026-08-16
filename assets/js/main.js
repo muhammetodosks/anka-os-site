@@ -118,7 +118,7 @@
     document.querySelectorAll(staggerParents.join(",")).forEach((g) => g.classList.add("in"));
   }
 
-  /* İndirme butonu statısı */
+  /* İndirme butonu statısı + sayaç */
   const btn = document.getElementById("downloadBtn");
   if (btn) {
     btn.addEventListener("click", () => {
@@ -127,8 +127,32 @@
       setTimeout(() => {
         btn.innerHTML = label + " ISO'yu İndir";
       }, 2600);
+      countDownload();
     });
   }
+
+  /* İndirme sayacı — localStorage tabanlı gerçek sayım */
+  function countDownload() {
+    try {
+      const key = "anka_downloads";
+      let n = parseInt(localStorage.getItem(key) || "0", 10);
+      localStorage.setItem(key, String(n + 1));
+      renderCount();
+    } catch (e) {
+      /* localStorage kapalıysa sessiz geç */
+    }
+  }
+  function renderCount() {
+    const el = document.getElementById("dlCount");
+    if (!el) return;
+    try {
+      const n = parseInt(localStorage.getItem("anka_downloads") || "0", 10);
+      el.textContent = n.toLocaleString("tr-TR") + ".";
+    } catch (e) {
+      el.textContent = "0.";
+    }
+  }
+  renderCount();
 
   /* Checksum kopyalama */
   const copyBtn = document.getElementById("copyChecksum");
